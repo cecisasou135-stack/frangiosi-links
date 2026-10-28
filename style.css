@@ -218,3 +218,16 @@ body {
     background-position: center top;
   }
 }
+.btn-destaque {
+  background: #c9a84c;
+  color: #1a0a00;
+  font-weight: 700;
+  border: 2px solid #c9a84c;
+}
+
+.btn-destaque:hover {
+  background: #e8cc80;
+  color: #1a0a00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
