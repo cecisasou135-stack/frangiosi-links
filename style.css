@@ -1,0 +1,220 @@
+/* ============================================================
+   Frangiosi Chocolate — Linktree Page · style.css
+   Paleta: marrom escuro, creme, dourado — tom luxo/refinado
+   ============================================================ */
+
+:root {
+  --brown-deep:  #1a0a00;
+  --brown-dark:  #3b1a0a;
+  --brown-mid:   #6b3520;
+  --gold:        #c9a84c;
+  --gold-light:  #e8cc80;
+  --cream:       #f5ead0;
+  --cream-light: #fdf6e8;
+  --text:        #fdf6e8;
+  --text-muted:  rgba(253,246,232,.6);
+  --btn-bg:      rgba(253,246,232,.10);
+  --btn-border:  rgba(201,168,76,.55);
+  --btn-hover:   rgba(201,168,76,.18);
+  --shadow:      rgba(10,3,0,.45);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1rem 3rem;
+  position: relative;
+  overflow-x: hidden;
+  background: var(--brown-deep);
+}
+
+/* ---------- foto de fundo ---------- */
+.bg-photo {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  /* opacidade da foto — aumente ou diminua o valor (0 a 1) */
+  opacity: 0.28;
+}
+
+/* overlay gradiente sobre a foto */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(26,10,0,.55) 0%,
+      rgba(26,10,0,.30) 40%,
+      rgba(26,10,0,.70) 100%
+    );
+}
+
+/* ---------- conteúdo ---------- */
+.page {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: fadeUp .7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- logo ---------- */
+.logo-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+}
+
+.logo-img {
+  width: min(260px, 70vw);
+  height: auto;
+  object-fit: contain;
+  /* inverte para branco/creme em fundo escuro */
+  filter: brightness(0) invert(1) sepia(1) saturate(.4) hue-rotate(5deg) brightness(1.1);
+  animation: fadeUp .7s .1s ease both;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* ---------- divisor dourado ---------- */
+.divider {
+  width: 60px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: 2rem;
+  animation: fadeUp .7s .2s ease both;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* ---------- botões ---------- */
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  width: 100%;
+  padding: 1.05rem 1.5rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .2s ease,
+    box-shadow .25s ease;
+  animation: fadeUp .7s calc(.3s + var(--i, 0) * .1s) ease both;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.links .btn:nth-child(1) { --i: 0; }
+.links .btn:nth-child(2) { --i: 1; }
+.links .btn:nth-child(3) { --i: 2; }
+.links .btn:nth-child(4) { --i: 3; }
+
+.btn-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(201,168,76,.5));
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-arrow {
+  font-size: 1.4rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .2s, transform .2s;
+  font-family: Georgia, serif;
+}
+
+.btn:hover {
+  background: var(--btn-hover);
+  border-color: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,.18);
+}
+.btn:hover .btn-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.btn:active {
+  transform: scale(.98);
+  box-shadow: none;
+}
+
+/* ---------- rodapé ---------- */
+.footer {
+  margin-top: 2.2rem;
+  font-size: .75rem;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: .06em;
+  font-style: italic;
+  animation: fadeUp .7s .8s ease both;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 400px) {
+  .btn { font-size: .72rem; padding: .9rem 1.1rem; }
+  .logo-img { width: min(200px, 75vw); }
+}
+
+/* ---------- foto de fundo no celular ---------- */
+@media (max-width: 600px) {
+  .bg-photo {
+    /* centraliza no rosto — ajuste o segundo valor:
+       0%  = topo da foto
+       15% = um pouco abaixo do topo (recomendado para rosto)
+       50% = meio da foto */
+    background-position: center top;
+  }
+}
